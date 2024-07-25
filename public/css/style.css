@@ -3,3 +3,14 @@
   justify-content: space-between;
   align-items: flex-start;
 }
+
+#delete-form{
+  display: grid;
+  text-align: center;
+}
+
+.comment{
+  border: solid;
+  border-radius: 10px;
+  padding: 20px;
+}
