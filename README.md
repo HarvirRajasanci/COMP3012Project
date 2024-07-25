@@ -107,11 +107,11 @@ All GET routes, unless otherwise specified, should `res.render` a template. All 
       - but if the sub doesn't already exist, make a new sub!
     - when finished redirects to the post just created ✅
   - `GET /posts/edit/:postid`
-    - form for editing an existing post
-    - please think for a moment about which parts of a post should be editable, and which should not
-    - Shouldn't load unless you're logged in _as the correct user_
+    - form for editing an existing post ✅
+    - please think for a moment about which parts of a post should be editable, and which should not ✅
+    - Shouldn't load unless you're logged in _as the correct user_ ✅
   - `POST /posts/edit/:postid`
-    - redirect back to the post when done
+    - redirect back to the post when done ✅
   - `GET /posts/deleteconfirm/:postid`
     - form for confirming delete of an existing post
     - shouldn't load unless you're logged in _as the correct user_
