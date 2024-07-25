@@ -36,8 +36,10 @@
             <p>By: <%= comment.creator.id %></p>
             <p>Posted: <%= comment.timestamp %></p>
 
+            <% if (user) { %>
             <% if (user.id === comment.creator.id || user.id === post.creator.id) { %>
               <a role="button" href="">Delete Comment</a>
+            <%  } %>
             <% } %>
           </div><br>
         <% }) %>
