@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.classless.min.css"
+    />
+    <link href="/css/style.css" rel="stylesheet" />
+    <title>DeletePost</title>
+  </head>
+  <body>
+    <main>
+      <div class="authOptions">
+        <h1>Delete Post</h1>
+        <a role="button" href="/posts">Home</a>
+      </div>
+      <form action="/posts/delete/<%=postId%>" method="post" id="delete-form">
+        <h2>Are you sure you want to delete this post?</h2>
+        <a role="button" href="/posts/show/<%=postId%>">Go Back</a><br><br>
+        <button>Delete Post</button>
+      </form>
+    </main>
+  </body>
+</html>
