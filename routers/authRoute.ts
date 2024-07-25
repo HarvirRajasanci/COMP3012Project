@@ -1,8 +1,8 @@
-import express from "express";
+import express, { NextFunction, Request, Response } from "express";
 import passport from "../middleware/passport";
 const router = express.Router();
 
-router.get("/login", async (req, res) => {
+router.get("/login", async (req: Request, res: Response) => {
   res.render("login");
 });
 
@@ -14,7 +14,7 @@ router.post(
   })
 );
 
-router.get("/logout", (req, res, next) => {
+router.get("/logout", (req: Request, res: Response, next: NextFunction) => {
   req.logout(function (err) {
     if (err) {
       return next(err);
