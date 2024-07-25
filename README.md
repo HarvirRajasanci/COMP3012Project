@@ -79,7 +79,7 @@ All GET routes, unless otherwise specified, should `res.render` a template. All 
   - `GET /` (redirects to /posts or /login)
     - shows a listing of the most recent 20 posts ✅
       - each entry has a link, which uses the title for its visible text ✅
-      - each entry also lists the user that created it
+      - each entry also lists the user that created it ✅
 - subs
 
   - `GET /subs/list`
@@ -91,21 +91,21 @@ All GET routes, unless otherwise specified, should `res.render` a template. All 
 
 - individual posts
   - `GET /posts/show/:postid`
-    - shows post title, post link, timestamp, and creator
+    - shows post title, post link, timestamp, and creator ✅
     - also has a list of _all comments_ related to this post
       - each of these should show the comment description, creator, and timestamp
       - optionally, each comment could have a link to delete it
     - if you're logged in, a form for commenting should show
   - `GET /posts/create`
-    - form for creating a new post
+    - form for creating a new post ✅
   - `POST /posts/create`
-    - processes the creation
-    - doesn't allow invalid creations, for example if there's no link and also no description
+    - processes the creation ✅
+    - doesn't allow invalid creations, for example if there's no link and also no description ✅
       - (no-link is okay if you want to do that, though)
     - every post must have a "sub", but it can be any string, including any string not previously used
       - so if the sub already exists, connect this post to that sub
       - but if the sub doesn't already exist, make a new sub!
-    - when finished redirects to the post just created
+    - when finished redirects to the post just created ✅
   - `GET /posts/edit/:postid`
     - form for editing an existing post
     - please think for a moment about which parts of a post should be editable, and which should not
