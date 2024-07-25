@@ -63,7 +63,7 @@ Note: Below, if you see a ✅ emoji, it means I have already completed that task
 
 ✅ Users must be able to log in and log out.
 
-Users must be able to create posts and comment on posts.
+✅ Users must be able to create posts and comment on posts.
 
 Posts are placed into subgroups, simply by specifying a subgroup during post-creation.
 
@@ -92,16 +92,16 @@ All GET routes, unless otherwise specified, should `res.render` a template. All 
 - individual posts
   - `GET /posts/show/:postid`
     - shows post title, post link, timestamp, and creator ✅
-    - also has a list of _all comments_ related to this post
-      - each of these should show the comment description, creator, and timestamp
-      - optionally, each comment could have a link to delete it
-    - if you're logged in, a form for commenting should show
+    - also has a list of _all comments_ related to this post ✅
+      - each of these should show the comment description, creator, and timestamp ✅
+      - optionally, each comment could have a link to delete it 
+    - if you're logged in, a form for commenting should show ✅
   - `GET /posts/create`
     - form for creating a new post ✅
   - `POST /posts/create`
     - processes the creation ✅
     - doesn't allow invalid creations, for example if there's no link and also no description ✅
-      - (no-link is okay if you want to do that, though)
+      - (no-link is okay if you want to do that, though) ✅
     - every post must have a "sub", but it can be any string, including any string not previously used
       - so if the sub already exists, connect this post to that sub
       - but if the sub doesn't already exist, make a new sub!
@@ -119,7 +119,7 @@ All GET routes, unless otherwise specified, should `res.render` a template. All 
     - if cancelled, redirect back to the post ✅
     - if successful, redirect back to the _sub that the post belonged to_ 
   - `POST /posts/comment-create/:postid`
-    - remember how `GET /posts/show/:postid` has a form for comments? It submits to here.
+    - remember how `GET /posts/show/:postid` has a form for comments? It submits to here. ✅
 
 #### Voting
 
