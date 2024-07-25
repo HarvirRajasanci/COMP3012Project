@@ -1,9 +1,10 @@
-import passport from "passport";
+import passport, { DoneCallback } from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
 import {
   getUserByEmailIdAndPassword,
   getUserById,
 } from "../controller/userController";
+import { TUser } from "../types";
 
 // ⭐ TODO: Passport Types
 const localLogin = new LocalStrategy(
@@ -11,7 +12,7 @@ const localLogin = new LocalStrategy(
     usernameField: "uname",
     passwordField: "password",
   },
-  async (uname: any, password: any, done: any) => {
+  async (uname: string, password: string, done: any) => {
     // Check if user exists in databse
     const user = await getUserByEmailIdAndPassword(uname, password);
     return user
@@ -22,13 +23,12 @@ const localLogin = new LocalStrategy(
   }
 );
 
-// ⭐ TODO: Passport Types
-passport.serializeUser(function (user: any, done: any) {
-  done(null, user.id);
+passport.serializeUser(function (user: Express.User, done: DoneCallback) {
+  const userId = (user as TUser).id;
+  done(null, userId);
 });
 
-// ⭐ TODO: Passport Types
-passport.deserializeUser(function (id: any, done: any) {
+passport.deserializeUser(function (id: number, done: DoneCallback) {
   const user = getUserById(id);
   if (user) {
     done(null, user);
