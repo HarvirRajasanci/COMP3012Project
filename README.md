@@ -113,11 +113,11 @@ All GET routes, unless otherwise specified, should `res.render` a template. All 
   - `POST /posts/edit/:postid`
     - redirect back to the post when done ✅
   - `GET /posts/deleteconfirm/:postid`
-    - form for confirming delete of an existing post
-    - shouldn't load unless you're logged in _as the correct user_
+    - form for confirming delete of an existing post ✅
+    - shouldn't load unless you're logged in _as the correct user_ ✅
   - `POST /posts/delete/:postid`
-    - if cancelled, redirect back to the post
-    - if successful, redirect back to the _sub that the post belonged to_
+    - if cancelled, redirect back to the post ✅
+    - if successful, redirect back to the _sub that the post belonged to_ 
   - `POST /posts/comment-create/:postid`
     - remember how `GET /posts/show/:postid` has a form for comments? It submits to here.
 
