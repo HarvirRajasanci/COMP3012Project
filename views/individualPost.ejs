@@ -24,16 +24,31 @@
         <p> <%= post.timestamp %></p>
         <% if (user) { %>
           <% if (user.id === post.creator.id) { %>
-          <a role="button" href="/posts/edit/<%=post.id%>">Edit Post</a><br><br>
+          <a role="button" href="/posts/edit/<%=post.id%>">Edit Post</a>
+          <a role="button" href="/posts/deleteconfirm/<%=post.id%>">Delete Post</a><br><br>
         <%  } %>
         <% } %>
         <p><Strong> Comments: </Strong></p>
 
-        <!-- <% post.comments.forEach(comment => { %>
+        <% comments.forEach((comment) => { %>
           <div class="comment">
-            <p><%= comment.creator %></p>
-          </div>
-          <% }) %> -->
+            <p><%= comment.description %></p>
+            <p>By: <%= comment.creator.id %></p>
+            <p>Posted: <%= comment.timestamp %></p>
+
+            <% if (user.id === comment.creator.id || user.id === post.creator.id) { %>
+              <a role="button" href="">Delete Comment</a>
+            <% } %>
+          </div><br>
+        <% }) %>
+
+        <% if (user) { %>
+          <br>
+          <form action="/posts/comment-create/<%=post.id%>" method="post">
+            <input type="text" placeholder="description" name="description">
+            <button>Post Comment</button>
+          </form>
+        <% } %>
 
       </div>
     </main>
