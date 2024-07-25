@@ -28,6 +28,7 @@
         <div class="individualPost">
           <a href="/posts/show/<%=post.id%>"><%= post.title %></a>
           <p><%= post.description %></p>
+          <p> Creator: <%= post.creator %></p>
         </div>
         <% }) %>
       </div>
@@ -37,12 +38,10 @@
       </div>
 
       <div>
-        <a role="button" href="/posts/create">Create Post</a>
+        <% if (user) { %>
+          <a role="button" href="/posts/create">Create Post</a>
+          <% } %>
       </div>
-      <p style="color: rgb(197, 172, 172)">
-        😦 Heads up...you probably want to hide the Create Post button above for
-        non-logged-in users!
-      </p>
     </main>
   </body>
 </html>
