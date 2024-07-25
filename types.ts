@@ -34,4 +34,10 @@ export type TUsers = {
   [key: number]: { id: number; uname: string; password: string };
 };
 
+export type TUser = {
+  id: number; 
+  uname: string;
+  password: string;
+}
+
 export type TVotes = { user_id: number; post_id: number; value: number }[];
