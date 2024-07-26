@@ -1,7 +1,14 @@
 import express from "express";
 import session from "express-session";
 import passport from "./middleware/passport";
+import RedisStore from "connect-redis"
+import Redis from "ioredis";
+const FileStore = require('session-file-store')(session);
+
+require('dotenv').config();
 const PORT = process.env.PORT || 8000;
+const REDIS_URL = process.env.REDIS_URL!;
+const isDev = process.env.NODE_ENV === "dev";
 
 const app = express();
 
@@ -10,6 +17,9 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(
   session({
+    store: isDev 
+    ? new FileStore({})
+    : new RedisStore({ client: new Redis(REDIS_URL) }),
     secret: "secret",
     resave: true,
     saveUninitialized: false,
