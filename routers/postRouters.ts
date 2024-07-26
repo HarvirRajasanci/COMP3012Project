@@ -83,4 +83,18 @@ router.post("/comment-create/:postid",ensureAuthenticated, async (req: Request, 
   }
 );
 
+router.post("/vote/:postid", ensureAuthenticated, async (req: Request, res: Response) => {
+  // ⭐ TODO
+  const postId = await req.params.postid;
+  const voteValue = await req.body.setvoteto;
+  const user = await req.user as TUser;
+  const post = await getPost(Number(postId));
+
+  console.log(post.votes);
+
+  await post.votes.push({ user_id: user.id, post_id: Number(postId), value: voteValue });
+  
+  res.redirect("/posts/show/" + postId);
+});
+
 export default router;
