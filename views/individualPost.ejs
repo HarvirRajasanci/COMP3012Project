@@ -23,12 +23,12 @@
         <p> <a href="post.link"><%= post.link %></a></p>
 
         <div id="vote">
-        <p>Votes: <%= post.votes.length %></p>
-        <% if (user) { %>
-          <form method="post" action="/posts/vote/<%=post.id%>" id="vote">
-              <button type="submit" name="setvoteto" value="1" class="vote-up {% if post.user_vote == 1 %}active{% endif %}">+</button>
-              <button type="submit" name="setvoteto" value="-1" class="vote-down {% if post.user_vote == -1 %}active{% endif %}">-</button>
-          </form>
+          <p>Votes: <%= post.votes.reduce((acc, vote) => acc + vote.value, 0) %></p>
+          <% if (user) { %>
+            <form method="post" action="/posts/vote/<%= post.id %>" id="vote-form">
+              <button type="submit" name="setvoteto" value="1" class="vote-up <% if (post.user_vote === 1) { %>active<% } %>">+</button>
+              <button type="submit" name="setvoteto" value="-1" class="vote-down <% if (post.user_vote === -1) { %>active<% } %>">-</button>
+            </form>
           <% } %>
         </div>
 
