@@ -16,7 +16,6 @@ router.get("/create", ensureAuthenticated, (req: Request, res: Response) => {
 });
 
 router.post("/create", ensureAuthenticated, async (req: Request, res: Response) => {
-  // ⭐ TODO
   const content = await req.body;
 
   if(content.title === "" || content.description === "" || content.subgroup === ""){
@@ -29,7 +28,6 @@ router.post("/create", ensureAuthenticated, async (req: Request, res: Response) 
 });
 
 router.get("/show/:postid", async (req: Request, res: Response) => {
-  // ⭐ TODO
   const postId = await req.params.postid;
   const post = await getPost(Number(postId));
   const comments = await post.comments;
@@ -53,13 +51,11 @@ router.post("/edit/:postid", ensureAuthenticated, async (req: Request, res: Resp
 });
 
 router.get("/deleteconfirm/:postid", ensureAuthenticated, async (req: Request, res: Response) => {
-  // ⭐ TODO
   const postId = await req.params.postid;
   res.render("deletePost", { postId });
 });
 
 router.post("/delete/:postid", ensureAuthenticated, async (req: Request, res: Response) => {
-  // ⭐ TODO
   const postId = await req.params.postid;
   const post = await getPost(Number(postId));
   
@@ -69,7 +65,6 @@ router.post("/delete/:postid", ensureAuthenticated, async (req: Request, res: Re
 });
 
 router.post("/comment-create/:postid",ensureAuthenticated, async (req: Request, res: Response) => {
-    // ⭐ TODO
     const postId = await req.params.postid;
     const content = await req.body;
     const user = await req.user as TUser;
@@ -85,7 +80,6 @@ router.post("/comment-create/:postid",ensureAuthenticated, async (req: Request, 
 );
 
 router.post("/vote/:postid", ensureAuthenticated, async (req: Request, res: Response) => {
-  // ⭐ TODO
   const postId = await req.params.postid;
   const voteValue = await req.body.setvoteto;
   const user = await req.user as TUser;
