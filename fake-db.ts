@@ -184,6 +184,17 @@ function addComment(post_id: number, creator: number, description: string) {
   return comment;
 }
 
+function addVote(user_id: number, post_id: number, value: number) {
+  let id = Math.max(...Object.keys(votes).map(Number)) + 1;
+  let vote = {
+    user_id,
+    post_id: post_id,
+    value: value
+  };
+  votes[id] = vote;
+  return vote;
+}
+
 export {
   debug,
   getUser,
@@ -196,4 +207,5 @@ export {
   getSubs,
   addComment,
   decoratePost,
+  addVote
 };
