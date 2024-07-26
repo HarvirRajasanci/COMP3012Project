@@ -108,6 +108,9 @@ function getPosts(n = 5, sub?: string) {
     allPosts = allPosts.filter((post) => post.subgroup === sub);
   }
   allPosts.sort((a, b) => b.timestamp - a.timestamp);
+  if(n == -1){
+    return allPosts;
+  }
   return allPosts.slice(0, n);
 }
 
