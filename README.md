@@ -85,7 +85,7 @@ All GET routes, unless otherwise specified, should `res.render` a template. All 
   - `GET /subs/list`
     - shows a list of all existing subs that have at least one post ✅
       - each entry is a link to the appropriate `GET /subs/show/:subname` ✅
-      - sort them predictably somehow, either alphabetical or by-post-count or something, up to you
+      - sort them predictably somehow, either alphabetical or by-post-count or something, up to you ✅
   - `GET /subs/show/:subname`
     - same as `GET /`, but filtered to only show posts that match the subname ✅
 
@@ -139,4 +139,4 @@ So you'll need to add at least this route:
 
 - `POST /posts/vote/:postid/`
   - uses a body field `setvoteto` to set vote to +1, -1, or 0, overriding previous vote
-  - redirects back to `GET /posts/show/:postid`
+  - redirects back to `GET /posts/show/:postid` ✅
