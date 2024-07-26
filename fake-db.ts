@@ -187,7 +187,11 @@ function addComment(post_id: number, creator: number, description: string) {
 function addVoteToDb(user_id: number, post_id: number, value: number) {
   let existingVoteIndex = votes.findIndex(vote => vote.user_id === user_id && vote.post_id === post_id);
   if (existingVoteIndex !== -1) {
-    votes[existingVoteIndex].value = value;
+    if (votes[existingVoteIndex].value === value) {
+      votes.splice(existingVoteIndex, 1);
+    } else {
+      votes[existingVoteIndex].value = value;
+    }
   } else {
     let vote = { user_id, post_id, value };
     votes.push(vote);
