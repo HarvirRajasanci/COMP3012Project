@@ -2,7 +2,8 @@ import express, { Request, Response } from "express";
 const router = express.Router();
 import { ensureAuthenticated } from "../middleware/checkAuth";
 import { getPost, getPosts, addPost, editPost, deletePost, addComment } from "../fake-db";
-import { TUser } from "../types";
+import { TUser, TVote } from "../types";
+import { addVote } from "../controller/postController";
 
 router.get("/", async (req: Request, res: Response) => {
   const posts = await getPosts(20);
@@ -88,12 +89,11 @@ router.post("/vote/:postid", ensureAuthenticated, async (req: Request, res: Resp
   const postId = await req.params.postid;
   const voteValue = await req.body.setvoteto;
   const user = await req.user as TUser;
-  const post = await getPost(Number(postId));
-
-  console.log(post.votes);
-
-  await post.votes.push({ user_id: user.id, post_id: Number(postId), value: voteValue });
   
+  const vote:TVote = { user_id: user.id, post_id: Number(postId), value: voteValue };
+
+  await addVote(vote);
+
   res.redirect("/posts/show/" + postId);
 });
 
