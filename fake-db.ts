@@ -185,14 +185,13 @@ function addComment(post_id: number, creator: number, description: string) {
 }
 
 function addVoteToDb(user_id: number, post_id: number, value: number) {
-  let id = Math.max(...Object.keys(votes).map(Number)) + 1;
-  let vote = {
-    user_id,
-    post_id: post_id,
-    value: value
-  };
-  votes[id] = vote;
-  return vote;
+  let existingVoteIndex = votes.findIndex(vote => vote.user_id === user_id && vote.post_id === post_id);
+  if (existingVoteIndex !== -1) {
+    votes[existingVoteIndex].value = value;
+  } else {
+    let vote = { user_id, post_id, value };
+    votes.push(vote);
+  }
 }
 
 export {
