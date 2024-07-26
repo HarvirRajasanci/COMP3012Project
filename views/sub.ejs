@@ -23,6 +23,14 @@
             <a href="/posts/show/<%=post.id%>"><%= post.title %></a>
             <p><%= post.description %></p>
             <p> Creator: <%= post.creator %></p>
+            <div id="vote">
+              <% if (user) { %>
+                <form method="post" action="/posts/vote/<%= post.id %>" id="vote-form">
+                  <button type="submit" name="setvoteto" value="1" class="vote-up <% if (post.user_vote === 1) { %>active<% } %>">+</button>
+                  <button type="submit" name="setvoteto" value="-1" class="vote-down <% if (post.user_vote === -1) { %>active<% } %>">-</button>
+                </form>
+              <% } %>
+            </div>
           </div>
           <% }) %>
       </div>
