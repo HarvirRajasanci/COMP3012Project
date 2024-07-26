@@ -12,15 +12,6 @@ export const getPostsBySubgroup = async (subgroup: string) => {
   };
 
   export const addVote = async(vote: TVote) => {
-
     const newVote = await db.addVoteToDb(vote.user_id, vote.post_id, vote.value);
-
-    if (newVote) {
-      return newVote;
-    }
-    return null;
-  }
-
-  export const removeVote = async(vote: TVote) => {
-
+    return newVote;
   }
