@@ -60,10 +60,11 @@ router.get("/deleteconfirm/:postid", ensureAuthenticated, async (req: Request, r
 router.post("/delete/:postid", ensureAuthenticated, async (req: Request, res: Response) => {
   // ⭐ TODO
   const postId = await req.params.postid;
+  const post = await getPost(Number(postId));
   
   await deletePost(Number(postId));
 
-  res.redirect("/posts");
+  res.redirect("/subs/show/" + post.subgroup);
 });
 
 router.post("/comment-create/:postid",ensureAuthenticated, async (req: Request, res: Response) => {
