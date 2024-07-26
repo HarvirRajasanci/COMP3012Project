@@ -6,7 +6,6 @@ import {
 } from "../controller/userController";
 import { TUser } from "../types";
 
-// ⭐ TODO: Passport Types
 const localLogin = new LocalStrategy(
   {
     usernameField: "uname",
