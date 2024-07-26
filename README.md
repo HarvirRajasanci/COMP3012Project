@@ -65,7 +65,7 @@ Note: Below, if you see a ✅ emoji, it means I have already completed that task
 
 ✅ Users must be able to create posts and comment on posts.
 
-Posts are placed into subgroups, simply by specifying a subgroup during post-creation.
+✅ Posts are placed into subgroups, simply by specifying a subgroup during post-creation.
 
 #### Routes Required
 
@@ -102,9 +102,9 @@ All GET routes, unless otherwise specified, should `res.render` a template. All 
     - processes the creation ✅
     - doesn't allow invalid creations, for example if there's no link and also no description ✅
       - (no-link is okay if you want to do that, though) ✅
-    - every post must have a "sub", but it can be any string, including any string not previously used
-      - so if the sub already exists, connect this post to that sub
-      - but if the sub doesn't already exist, make a new sub!
+    - every post must have a "sub", but it can be any string, including any string not previously used ✅
+      - so if the sub already exists, connect this post to that sub ✅
+      - but if the sub doesn't already exist, make a new sub! ✅
     - when finished redirects to the post just created ✅
   - `GET /posts/edit/:postid`
     - form for editing an existing post ✅
@@ -117,7 +117,7 @@ All GET routes, unless otherwise specified, should `res.render` a template. All 
     - shouldn't load unless you're logged in _as the correct user_ ✅
   - `POST /posts/delete/:postid`
     - if cancelled, redirect back to the post ✅
-    - if successful, redirect back to the _sub that the post belonged to_ 
+    - if successful, redirect back to the _sub that the post belonged to_ ✅
   - `POST /posts/comment-create/:postid`
     - remember how `GET /posts/show/:postid` has a form for comments? It submits to here. ✅
 
