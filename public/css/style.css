@@ -14,3 +14,21 @@
   border-radius: 10px;
   padding: 20px;
 }
+
+.vote-up.active,
+.vote-down.active {
+  background-color: #ffc107;
+  color: white;
+}
+
+.vote-up,
+.vote-down {
+    color: white;
+    border-radius: 40px;
+    margin-right: 10px;
+    max-width: 10%;
+}
+
+#vote{
+  display: grid;
+}
