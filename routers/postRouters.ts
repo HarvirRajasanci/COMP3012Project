@@ -68,7 +68,7 @@ router.post("/delete/:postid", ensureAuthenticated, async (req: Request, res: Re
   res.redirect("/subs/show/" + post.subgroup);
 });
 
-router.post("/comment-create/:postid", ensureAuthenticated, async (req: Request, res: Response) => {
+router.post("/comment-create/:postid",ensureAuthenticated, async (req: Request, res: Response) => {
     // ⭐ TODO
     const postId = await req.params.postid;
     const content = await req.body;
@@ -89,13 +89,10 @@ router.post("/vote/:postid", ensureAuthenticated, async (req: Request, res: Resp
   const postId = await req.params.postid;
   const voteValue = await req.body.setvoteto;
   const user = await req.user as TUser;
-  const post = await getPost(Number(postId));
   
   const vote:TVote = { user_id: user.id, post_id: Number(postId), value: Number(voteValue) };
 
   await addVote(vote);
-
-  console.log(post);
 
   res.redirect("/posts/show/" + postId);
 });
